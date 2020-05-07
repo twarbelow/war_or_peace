@@ -25,7 +25,7 @@ class Deck
   def percent_high_ranking
     high = 0.0
     low = 0.0
-    cards.map do |card|
+    cards.each do |card|
       if card.rank >= 11
         high += 1
       else
@@ -42,5 +42,5 @@ class Deck
 
 end
 
-
+#practice comment
 # initializer sets instance variables == arguments
