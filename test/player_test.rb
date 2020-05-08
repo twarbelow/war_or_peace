@@ -11,20 +11,23 @@ class PlayerTest < Minitest::Test
     @card2 = Card.new(:spade, '3', 3)
     @card3 = Card.new(:heart, 'Ace', 14)
     @deck = Deck.new([@card1, @card2, @card3])
+    @player = Player.new('Clarisa', @deck)
   end
 
   def test_it_exists
-    player = Player.new('Clarisa', @deck)
-
-    assert_instance_of Player, player
+    assert_instance_of Player, @player
   end
+
+  def test_it_has_name
+    assert_equal "Clarisa", @player.name
+  end
+
+
 end
 
 
 
-# player = Player.new('Clarisa', deck)
-# #=> #<Player:0x007f9cc3b4c988 @deck=#<Deck:0x007f9cc396bdf8 @cards=[#<Card:0x007f9cc3a73a98...>, #<Card:0x007f9cc3a03720...>, #<Card:0x007f9cc3a44c98...>]>, @name="Clarisa">
-#
+
 # player.name
 # #=> "Clarisa"
 #
