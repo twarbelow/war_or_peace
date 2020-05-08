@@ -31,36 +31,16 @@ class PlayerTest < Minitest::Test
     @player.deck.remove_card
     @player.deck.remove_card
 
-    assert_equal [], @player.has_lost?
+    assert_equal true, @player.has_lost?
+  end
+
+  def test_case_name
+
   end
 
 
 end
 
 
-
-
-
-# player.has_lost?
-# #=> false
-#
-# player.deck.remove_card
-# #=> #<Card:0x007f9cc3a73a98 @rank=12, @suit=:diamond, @value="Queen">
-#
-# player.has_lost?
-# #=> false
-#
-# player.deck.remove_card
-# #=> #<Card:0x007f9cc3a03720 @rank=3, @suit=:spade, @value="3">
-#
-# player.has_lost?
-# #=> false
-#
-# player.deck.remove_card
-# #=> #<Card:0x007f9cc3a44c98 @rank=14, @suit=:heart, @value="Ace">
-#
-# player.has_lost?
-# #=> true
-#
 # player.deck
 # #=> #<Deck:0x007f9cc396bdf8 @cards=[]>
