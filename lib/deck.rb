@@ -12,7 +12,7 @@ class Deck
   end
 
 #can this be more succinct?
-  def identify_high_ranking_cards
+  def high_ranking_cards
     cards.map do |card|
       if card.rank >= 11
         high_cards << card
@@ -39,8 +39,7 @@ class Deck
     cards.shift
   end
 
-
+  def add_card(new_card)
+    cards << new_card
+  end
 end
-
-#practice comment
-# initializer sets instance variables == arguments
