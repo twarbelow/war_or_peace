@@ -22,14 +22,16 @@ class PlayerTest < Minitest::Test
     assert_equal "Clarisa", @player.name
   end
 
+  def test_it_has_deck
+    assert_equal @deck, @player.deck
+  end
+
 
 end
 
 
 
 
-# player.name
-# #=> "Clarisa"
 #
 # player.deck
 # #=> #<Deck:0x007f9cc396bdf8 @cards=[#<Card:0x007f9cc3a73a98...>, #<Card:0x007f9cc3a03720...>, #<Card:0x007f9cc3a44c98...>]>
