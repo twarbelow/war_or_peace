@@ -33,14 +33,4 @@ class PlayerTest < Minitest::Test
 
     assert_equal true, @player.has_lost?
   end
-
-  def test_case_name
-
-  end
-
-
 end
-
-
-# player.deck
-# #=> #<Deck:0x007f9cc396bdf8 @cards=[]>
