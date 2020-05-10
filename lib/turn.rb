@@ -2,39 +2,52 @@ class Turn
   attr_reader :player1,
               :player2,
               :spoils_of_war,
-              :player1_card,
-              :player2_card,
-              :spoils_of_war
+              :spoils_of_war,
+              :best
 
   def initialize(player1, player2)
     @player1 = player1
-    @player1_card = player1.deck.remove_card
     @player2 = player2
-    @player2_card = player2.deck.remove_card
     @spoils_of_war = []
+    @best = ""
 
   end
 
   def type
-    if player1_card.rank != player2_card.rank
+    if player1.deck.cards[0].rank != player2.deck.cards[0].rank
       :basic
+    elsif player1.deck.cards[0].rank == player2.deck.cards[0].rank && player1.deck.cards[2].rank == player2.deck.cards[2].rank
+      :mutually_assured_destruction
+    else :war
     end
   end
 
   def winner
-    if player1_card.rank >= player2_card.rank
-      player1.name
-    else
-      player2.name
+    if self.type == :basic
+      if player1.deck.cards[0].rank >= player2.deck.cards[0].rank
+        player1.name
+      else
+        player2.name
+      end
+    elsif self.type == :war
+      #code here
+    else self.type == :mutually_assured_destruction
     end
   end
 
   def pile_cards
-    spoils_of_war.concat [player1_card, player2_card]
+    @best = self.winner
+    if self.type == :basic
+      spoils_of_war.concat [player1.deck.cards.shift, player2.deck.cards.shift]
+    elsif self.type == :war
+      #code here
+    else
+      #code here
+    end
   end
 
   def award_spoils
-    if player1.name == winner
+    if player1.name == best
       player1.deck.cards.concat spoils_of_war
     else
       player2.deck.cards.concat spoils_of_war
@@ -54,4 +67,5 @@ end
 # for a :basic turn, each player will send one card (the top card) to the spoils pile
 # for a :war turn, each player will send three cards (the top three cards) to the spoils pile
 # for a :mutually_assured_destruction turn, each player will remove three cards from play (the top three cards in their deck). These cards are not sent to the spoils pile, they are simply removed from each players’ deck.
+
 # award_spoils: this method will add each of the cards in the @spoils_of_war array to the winner of the turn.
