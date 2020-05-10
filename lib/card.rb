@@ -5,8 +5,4 @@ class Card
     @value = value
     @rank = rank
   end
-
-  def rank_of_card_at(location)
-    rank
-  end
 end
