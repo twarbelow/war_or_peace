@@ -3,8 +3,8 @@ class Turn
               :player2,
               :spoils_of_war,
               :player1_card,
-              :player2_card
-
+              :player2_card,
+              :spoils_of_war
 
   def initialize(player1, player2)
     @player1 = player1
@@ -28,11 +28,20 @@ class Turn
       player2.name
     end
   end
+
+  def pile_cards
+    spoils_of_war.concat [player1_card, player2_card]
+  end
+
+  def award_spoils
+    if player1.name == winner
+      player1.deck.cards.concat spoils_of_war
+    else
+      player2.deck.cards.concat spoils_of_war
+    end
+  end
 end
 
-
-# initialize: A Turn is created with two players - player1 and player2
-# readable attributes for player1, player2, and spoils_of_war
 # type: a turn is :basic, :war, or :mutually_assured_destruction.
 # A :basic turn is one in which the rank_of_card_at(0) from the players’ decks are not the same rank.
 # A :war turn occurs when both players’ rank_of_card_at(0) are the same.
