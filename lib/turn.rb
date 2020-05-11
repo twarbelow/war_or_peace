@@ -2,7 +2,6 @@ class Turn
   attr_reader :player1,
               :player2,
               :spoils_of_war,
-              :spoils_of_war,
               :best
 
   def initialize(player1, player2)
@@ -54,8 +53,9 @@ class Turn
   def award_spoils
     if player1.name == best
       player1.deck.cards.concat spoils_of_war
-    else
+    elsif player2.name == best
       player2.deck.cards.concat spoils_of_war
     end
+    @spoils_of_war = []
   end
 end

@@ -37,7 +37,7 @@ class TurnTest < Minitest::Test
     end
 
     def test_it_has_correct_type
-      assert_equal :basic, @turn.type
+      assert_equal basic, @turn.type
     end
 
     def test_it_has_a_winner
