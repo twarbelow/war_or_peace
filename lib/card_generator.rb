@@ -6,7 +6,7 @@ class CardGenerator
     @filename = filename
   end
 
-  def cards #this method is messy
+  def cards 
     cards = []
     File.open(filename).each do |line|
       suit = line.split.shift.tr!(",", "").to_sym
