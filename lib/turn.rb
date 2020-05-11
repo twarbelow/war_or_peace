@@ -42,8 +42,10 @@ class Turn
     @best = self.winner
     if self.type == :basic
       spoils_of_war.concat [player1.deck.cards.shift, player2.deck.cards.shift]
+      spoils_of_war.shuffle!
     elsif self.type == :war
       spoils_of_war.concat player1.deck.cards.shift(3), player2.deck.cards.shift(3)
+      spoils_of_war.shuffle!
     else
       player1.deck.cards.shift(3)
       player2.deck.cards.shift(3)

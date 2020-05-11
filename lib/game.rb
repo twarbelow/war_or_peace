@@ -20,7 +20,7 @@ class Game
   def play
     while turn_number < 1000000
       @turn_number += 1
-      round.pile_cards
+
       if round.type == :basic
         p "Turn #{turn_number}: #{round.best} won 2 cards!"
       elsif round.type == :war
@@ -28,10 +28,13 @@ class Game
       else
         p "Mutually Assured Destruction - 6 cards removed from play"
       end
+
+      round.pile_cards
       round.award_spoils
-      if round.player1.deck == []
+
+      if round.player1.deck.cards.count == 0
         abort "*~*~*~* #{round.player2.name} has won the game! *~*~*~*"
-      elsif round.player2.deck == []
+      elsif round.player2.deck.cards.count == 0
         abort "*~*~*~* #{round.player1.name} has won the game! *~*~*~*"
       end
 
