@@ -10,7 +10,17 @@ class Turn
     @player2 = player2
     @spoils_of_war = []
     @best = ""
+  end
 
+  def start
+    p "Welcome to War! (or Peace) This game will be played with 52 cards"
+    p "The players today are Megan and Aurora."
+    p "Type 'GO' to start the game!"
+    if gets.chomp.upcase == "GO"
+      turn_count = 0
+
+    else p "Ok, mayber next time!"
+    end
   end
 
   def type

@@ -2,59 +2,46 @@ require './lib/card'
 require './lib/deck'
 require './lib/player'
 require './lib/turn'
+require './lib/card_generator'
 
-2, Heart, 2
-3, Heart, 3
-4, Heart, 4
-5, Heart, 5
-6, Heart, 6
-7, Heart, 7
-8, Heart, 8
-9, Heart, 9
-10, Heart, 10
-Jack, Heart, 11
-Queen, Heart, 12
-King, Heart, 13
-Ace, Heart, 14
 
-2, Diamond, 2
-3, Diamond, 3
-4, Diamond, 4
-5, Diamond, 5
-6, Diamond, 6
-7, Diamond, 7
-8, Diamond, 8
-9, Diamond, 9
-10, Diamond, 10
-Jack, Diamond, 11
-Queen, Diamond, 12
-King, Diamond, 13
-Ace, Diamond, 14
+full_deck = CardGenerator.new('cards.txt').cards
 
-2, Spade, 2
-3, Spade, 3
-4, Spade, 4
-5, Spade, 5
-6, Spade, 6
-7, Spade, 7
-8, Spade, 8
-9, Spade, 9
-10, Spade, 10
-Jack, Spade, 11
-Queen, Spade, 12
-King, Spade, 13
-Ace, Spade, 14
+deck1 = full_deck.shift(26)
+deck2 = full_deck
 
-2, Club, 2
-3, Club, 3
-4, Club, 4
-5, Club, 5
-6, Club, 6
-7, Club, 7
-8, Club, 8
-9, Club, 9
-10, Club, 10
-Jack, Club, 11
-Queen, Club, 12
-King, Club, 13
-Ace, Club, 14
+player_deck1 = Deck.new(deck1)
+player_deck2 = Deck.new(deck2)
+
+player1 = Player.new("Megan", player_deck1)
+player2 = Player.new("Aurora", player_deck2)
+
+turn = Turn.new(player1, player2)
+
+turn.start
+
+
+# Use p to display a line of text output to the user
+# Keep in mind that your existing objects should still pass all existing tests - nothing that you add in this iteration should break anything that functioned in iterations 1 or 2!
+# The user will then see each turn being played, like this:
+#
+# Turn 1: Megan won 2 cards
+# Turn 2: WAR - Aurora won 6 cards
+# Turn 3: *mutually assured destruction* 6 cards removed from play
+# ...
+# ...
+# ...
+# Turn 9324: Aurora won 2 cards
+# *~*~*~* Aurora has won the game! *~*~*~*
+# The game continues until one player has all cards in play, at which point, that player is declared the winner of the game! Hint: take a look at the classes that you have built already, is there a method that will help you determine when the game has been won? or lost?
+#
+# In this game, there is the possibility of no winner. In order to cut down the amount of time it takes to play each game, and ensure that the game eventually does end, only 1,000,000 turns will be allowed. If no player has all cards after 1,000,000 turns, the result of the game is a draw.
+#
+# Turn 1: Megan won 2 cards
+# Turn 2: WAR - Aurora won 6 cards
+# Turn 3: *mutually assured destruction* 6 cards removed from play
+# ...
+# ...
+# ...
+# Turn 1000000: Aurora won 2 cards
+# ---- DRAW ----
