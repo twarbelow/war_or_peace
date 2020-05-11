@@ -14,6 +14,6 @@ class CardGenerator
       rank = line.split[2]
       cards << Card.new(suit, value, rank)
     end
-    cards
+    cards.shuffle!
   end
 end
