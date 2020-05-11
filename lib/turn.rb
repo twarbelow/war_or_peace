@@ -12,17 +12,6 @@ class Turn
     @best = ""
   end
 
-  def start
-    p "Welcome to War! (or Peace) This game will be played with 52 cards"
-    p "The players today are Megan and Aurora."
-    p "Type 'GO' to start the game!"
-    if gets.chomp.upcase == "GO"
-      turn_count = 0
-
-    else p "Ok, mayber next time!"
-    end
-  end
-
   def type
     if player1.deck.cards[0].rank != player2.deck.cards[0].rank
       :basic
@@ -45,7 +34,7 @@ class Turn
       else
         @best = player2.name
       end
-    else self.type == :mutually_assured_destruction
+    else #self.type == :mutually_assured_destruction
       "No Winner!"
     end
   end
@@ -56,7 +45,7 @@ class Turn
       spoils_of_war.concat [player1.deck.cards.shift, player2.deck.cards.shift]
     elsif self.type == :war
       spoils_of_war.concat player1.deck.cards.shift(3), player2.deck.cards.shift(3)
-    else # type == mutually assured destruction
+    else
       player1.deck.cards.shift(3)
       player2.deck.cards.shift(3)
     end
