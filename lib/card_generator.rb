@@ -9,9 +9,10 @@ class CardGenerator
   def cards #this method is messy
     cards = []
     File.open(filename).each do |line|
-      suit = line.split.shift
+      suit = line.split.shift.to_sym
       value = line.split[1]
-      rank = line.split[2]
+      value.tr!(",", "") 
+      rank = line.split[2].to_i
       cards << Card.new(suit, value, rank)
     end
     cards.shuffle!
