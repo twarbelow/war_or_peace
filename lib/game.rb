@@ -32,9 +32,9 @@ class Game
       round.pile_cards
       round.award_spoils
 
-      if round.player1.deck.cards.count == 0
+      if round.player1.deck.cards.count <= 3
         abort "*~*~*~* #{round.player2.name} has won the game! *~*~*~*"
-      elsif round.player2.deck.cards.count == 0
+      elsif round.player2.deck.cards.count <=3
         abort "*~*~*~* #{round.player1.name} has won the game! *~*~*~*"
       end
 
